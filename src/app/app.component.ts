@@ -56,13 +56,8 @@ export class AppComponent {
     const url = 'https://ds0k5q2pdc.execute-api.ap-southeast-2.amazonaws.com/dev';
 
       axios.default.get(url).then((data) => {
-        console.log(data);
-        console.log(data.data.returnData[0]);
-
         let cleanerDataset = data.data.returnData[0].series;
         var results = cleanerDataset.map(fixDateTime)
-        console.log("res", results)
-        console.log(cleanerDataset);
 
         this.tempData = [{ name: 'Temperature', series: results }];
         this.chartsPop = true;
